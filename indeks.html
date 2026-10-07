@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letta Online Shop - Maine Coon & Cat Boutique</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Quicksand for cute chic look -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#FFF0F3',
+                        deepPink: '#FFB3C6',
+                        accentPink: '#FF8FAB',
+                        softGold: '#E5C158',
+                        warmBrown: '#5C4033',
+                        cream: '#FFFBF5'
+                    },
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFFBF5;
+            color: #5C4033;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF0F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB3C6;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF8FAB;
+        }
+    </style>
+</head>
+<body class="bg-cream text-warmBrown antialiased selection:bg-deepPink selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-pastelPink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-pastelPink flex items-center justify-center border-2 border-accentPink shadow-inner group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-cat text-accentPink text-2xl"></i>
+                </div>
+                <div>
+                    <span class="heading-font text-2xl font-bold tracking-wide text-warmBrown block">Letta Online Shop</span>
+                    <span class="text-xs text-accentPink font-semibold tracking-widest uppercase">Majestic Maine Coon Store</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#home" class="hover:text-accentPink transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-accentPink transition-colors">Tentang Kami</a>
+                <a href="#catalog" class="hover:text-accentPink transition-colors">Katalog Produk</a>
+                <a href="#testimonials" class="hover:text-accentPink transition-colors">Testimoni</a>
+                <a href="#contact" class="hover:text-accentPink transition-colors">Kontak</a>
+            </nav>
+
+            <!-- Actions / Cart Button -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-3 bg-pastelPink hover:bg-deepPink text-warmBrown rounded-full transition-all shadow-sm flex items-center justify-center">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-accentPink text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="openMessage('Hubungi admin melalui WhatsApp untuk konsultasi produk kucing kesayangan Anda!')" class="hidden sm:inline-flex bg-accentPink hover:bg-deepPink text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-md hover:shadow-lg">
+                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Chat Admin
+                </button>
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-warmBrown text-xl">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-pastelPink px-4 pt-2 pb-4 space-y-3">
+            <a href="#home" class="block py-2 px-3 rounded-lg hover:bg-pastelPink transition-colors">Beranda</a>
+            <a href="#about" class="block py-2 px-3 rounded-lg hover:bg-pastelPink transition-colors">Tentang Kami</a>
+            <a href="#catalog" class="block py-2 px-3 rounded-lg hover:bg-pastelPink transition-colors">Katalog Produk</a>
+            <a href="#testimonials" class="block py-2 px-3 rounded-lg hover:bg-pastelPink transition-colors">Testimoni</a>
+            <a href="#contact" class="block py-2 px-3 rounded-lg hover:bg-pastelPink transition-colors">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-pastelPink/60 to-cream py-16 lg:py-24">
+        <!-- Decorative blobs -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-deepPink/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-24 w-96 h-96 bg-softGold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-pastelPink">
+                        <i class="fa-solid fa-crown text-softGold"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider text-accentPink">Specialist Kucing Raja Maine Coon</span>
+                    </div>
+                    <h1 class="heading-font text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-warmBrown">
+                        Kemegahan Maine Coon & <span class="text-accentPink italic">Manisnya Sentuhan Chic</span>
+                    </h1>
+                    <p class="text-lg text-warmBrown/80 max-w-xl mx-auto lg:mx-0">
+                        Selamat datang di **Letta Online Shop**! Destinasi utama para pecinta kucing yang menghadirkan produk premium, makanan berkualitas tinggi, serta aksesori terbaik khusus untuk raja kucing berbulu lebat kesayangan Anda.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#catalog" class="bg-accentPink hover:bg-deepPink text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fa-solid fa-bag-shopping"></i> Jelajahi Katalog
+                        </a>
+                        <a href="#about" class="bg-white hover:bg-pastelPink text-warmBrown border-2 border-pastelPink px-8 py-4 rounded-full font-bold shadow-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-accentPink"></i> Kenali Kami
+                        </a>
+                    </div>
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-deepPink/20 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="heading-font text-2xl font-bold text-warmBrown">100%</p>
+                            <p class="text-xs text-warmBrown/70">Produk Original</p>
+                        </div>
+                        <div>
+                            <p class="heading-font text-2xl font-bold text-warmBrown">500+</p>
+                            <p class="text-xs text-warmBrown/70">Cat Lovers Puas</p>
+                        </div>
+                        <div>
+                            <p class="heading-font text-2xl font-bold text-warmBrown">24/7</p>
+                            <p class="text-xs text-warmBrown/70">Konsultasi Admin</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image / Illustration Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Main Card Shape -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accentPink to-deepPink rounded-3xl transform rotate-3 shadow-xl"></div>
+                        <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-white flex flex-col items-center text-center">
+                            <!-- Maine Coon Cat Graphic representation -->
+                            <div class="w-full h-72 rounded-2xl overflow-hidden bg-pastelPink relative flex items-center justify-center group">
+                                <img src="https://placehold.co/500x500/FFB3C6/5C4033?text=Maine+Coon+Royal+Chic" alt="Maine Coon Cat Letta Shop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/500x500/FFF0F3/5C4033?text=Letta+Cat+Shop'">
+                                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-accentPink shadow">
+                                    <i class="fa-solid fa-star text-softGold"></i> Best Quality
+                                </div>
+                            </div>
+                            <div class="mt-6 w-full space-y-2">
+                                <h3 class="heading-font text-xl font-bold text-warmBrown">Letta's Favorite Choice</h3>
+                                <p class="text-sm text-warmBrown/70">Dirancang khusus dengan standar kenyamanan tinggi untuk merawat bulu lebat dan megah Maine Coon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-pastelPink px-4 py-1.5 rounded-full text-accentPink text-xs font-bold tracking-wider uppercase">
+                        <i class="fa-solid fa-paw"></i> Tentang Letta Online Shop
+                    </div>
+                    <h2 class="heading-font text-3xl sm:text-4xl font-bold text-warmBrown leading-tight">
+                        Kombinasi Sempurna Antara Keanggunan Maine Coon & Keceriaan Ice Cream Pastel
+                    </h2>
+                    <p class="text-warmBrown/80 leading-relaxed">
+                        Berawal dari kecintaan mendalam terhadap ras kucing **Maine Coon** yang memiliki ukuran tubuh besar, bulu tebal yang anggun, namun berkarakter sangat lembut dan manja, **Letta Online Shop** didirikan. Kami memadukan estetika warna pink pastel ala *dessert chic* yang manis dengan kebutuhan eksklusif untuk raja kucing kesayangan Anda.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3 p-4 rounded-2xl bg-pastelPink/50 border border-pastelPink">
+                            <div class="w-10 h-10 rounded-xl bg-accentPink text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-shield-cat"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-warmBrown text-sm">Aman & Teruji</h4>
+                                <p class="text-xs text-warmBrown/70">Seluruh produk lolos kurasi ketat untuk kesehatan kucing.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 rounded-2xl bg-pastelPink/50 border border-pastelPink">
+                            <div class="w-10 h-10 rounded-xl bg-accentPink text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-gem"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-warmBrown text-sm">Gaya Eksklusif</h4>
+                                <p class="text-xs text-warmBrown/70">Aksesori chic dan estetik dengan nuansa pastel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://placehold.co/400x500/FFF0F3/5C4033?text=Maine+Coon+1" alt="Maine Coon Cute" class="rounded-3xl shadow-lg w-full h-64 object-cover" onerror="this.src='https://placehold.co/400x500/FFB3C6/5C4033?text=Cat+Image'">
+                        <div class="bg-deepPink/20 p-6 rounded-3xl text-center space-y-2">
+                            <i class="fa-solid fa-heart text-accentPink text-3xl"></i>
+                            <h4 class="font-bold text-warmBrown text-sm">Dibuat Dengan Cinta</h4>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-pastelPink p-6 rounded-3xl text-center space-y-2">
+                            <i class="fa-solid fa-ice-cream text-accentPink text-3xl"></i>
+                            <h4 class="font-bold text-warmBrown text-sm">Chic & Sweet Vibe</h4>
+                        </div>
+                        <img src="https://placehold.co/400x500/FFB3C6/5C4033?text=Maine+Coon+2" alt="Maine Coon Majestic" class="rounded-3xl shadow-lg w-full h-64 object-cover" onerror="this.src='https://placehold.co/400x500/FFF0F3/5C4033?text=Cat+Image'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="py-20 bg-gradient-to-b from-white to-pastelPink/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+                <div class="inline-flex items-center gap-2 bg-pastelPink px-4 py-1.5 rounded-full text-accentPink text-xs font-bold tracking-wider uppercase">
+                    <i class="fa-solid fa-store"></i> Katalog Produk Pilihan
+                </div>
+                <h2 class="heading-font text-3xl sm:text-4xl font-bold text-warmBrown">
+                    Manjakan Raja Maine Coon Anda
+                </h2>
+                <p class="text-warmBrown/70">
+                    Pilih kategori produk terbaik untuk mendukung kesehatan, keindahan bulu lebat, dan kebahagiaan kucing kesayangan.
+                </p>
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 pt-4">
+                    <button onclick="filterCategory('all')" id="btn-all" class="category-btn bg-accentPink text-white px-5 py-2 rounded-full text-sm font-bold shadow-sm transition-all">Semua Produk</button>
+                    <button onclick="filterCategory('makanan')" id="btn-makanan" class="category-btn bg-white hover:bg-pastelPink text-warmBrown border border-pastelPink px-5 py-2 rounded-full text-sm font-semibold transition-all">Makanan & Nutrisi</button>
+                    <button onclick="filterCategory('aksesori')" id="btn-aksesori" class="category-btn bg-white hover:bg-pastelPink text-warmBrown border border-pastelPink px-5 py-2 rounded-full text-sm font-semibold transition-all">Aksesori & Kalung</button>
+                    <button onclick="filterCategory('mainan')" id="btn-mainan" class="category-btn bg-white hover:bg-pastelPink text-warmBrown border border-pastelPink px-5 py-2 rounded-full text-sm font-semibold transition-all">Mainan & Garukan</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="makanan">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFB3C6/5C4033?text=Royal+Maine+Coon+Food" alt="Makanan Maine Coon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFF0F3/5C4033?text=Cat+Food'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Makanan</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-warmBrown/60 ml-1">(4.9)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Royal Maine Coon Adult Formula 2kg</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Dirancang khusus dengan kibble besar untuk bentuk rahang kuat Maine Coon serta menjaga kesehatan sendi & bulu.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 285.000</span>
+                            <button onclick="addToCart('Royal Maine Coon Adult 2kg', 285000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="aksesori">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFF0F3/5C4033?text=Pastel+Velvet+Collar" alt="Kalung Kucing Pastel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFB3C6/5C4033?text=Cat+Collar'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Aksesori</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-warmBrown/60 ml-1">(5.0)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Letta Ice Cream Velvet Collar & Bell</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Kalung beludru super lembut dengan warna pink pastel chic, dilengkapi lonceng bernada manis dan inisial nama.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 65.000</span>
+                            <button onclick="addToCart('Letta Velvet Collar', 65000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="mainan">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFB3C6/5C4033?text=Mega+Cat+Scratcher+Tree" alt="Garukan Kucing Besar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFF0F3/5C4033?text=Cat+Scratcher'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Mainan</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-warmBrown/60 ml-1">(4.8)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Mega Pastel Cat Tree & Heavy Scratch Post</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Pohon kucing kokoh ekstra besar yang didesain khusus untuk menopang berat badan Maine Coon dewasa dengan pilar sisal tebal.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 750.000</span>
+                            <button onclick="addToCart('Mega Pastel Cat Tree', 750000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="makanan">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFF0F3/5C4033?text=Salmon+Creamy+Treats" alt="Snack Kucing Creamy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFB3C6/5C4033?text=Cat+Treats'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Makanan</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-warmBrown/60 ml-1">(4.9)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Letta Premium Salmon Creamy Puree (Pack of 5)</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Camilan basah lezat kaya omega-3 untuk menjaga kelembapan dan kemilau bulu panjang Maine Coon.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 45.000</span>
+                            <button onclick="addToCart('Salmon Creamy Puree (5pcs)', 45000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="aksesori">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFB3C6/5C4033?text=Ceramic+Pastel+Bowl" alt="Mangkuk Kucing Keramik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFF0F3/5C4033?text=Cat+Bowl'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Aksesori</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-warmBrown/60 ml-1">(5.0)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Ergonomic Pastel Ceramic Whisker Bowl</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Mangkuk makanan anti-bakteri miring dengan desain pastel chic mencegah kumis kucing sensitif tertekan.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 95.000</span>
+                            <button onclick="addToCart('Ergonomic Ceramic Bowl', 95000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-3xl shadow-md overflow-hidden border border-pastelPink/60 hover:shadow-xl transition-all flex flex-col" data-category="mainan">
+                    <div class="relative h-60 bg-pastelPink overflow-hidden group">
+                        <img src="https://placehold.co/400x300/FFF0F3/5C4033?text=Feather+Teaser+Toy" alt="Mainan Tongkat Bulu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/FFB3C6/5C4033?text=Cat+Toy'">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-accentPink text-xs font-bold px-3 py-1 rounded-full shadow">Mainan</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow space-y-4">
+                        <div class="flex items-center text-softGold text-xs gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-warmBrown/60 ml-1">(4.7)</span>
+                        </div>
+                        <h3 class="heading-font text-xl font-bold text-warmBrown">Interactive Pastel Wand & Natural Feathers</h3>
+                        <p class="text-sm text-warmBrown/70 flex-grow">Tongkat mainan interaktif dengan bulu alami dan lonceng ringan untuk melatih insting berburu aktif Maine Coon.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-pastelPink">
+                            <span class="heading-font text-xl font-bold text-accentPink">Rp 40.000</span>
+                            <button onclick="addToCart('Interactive Pastel Wand', 40000)" class="bg-pastelPink hover:bg-accentPink hover:text-white text-warmBrown px-4 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <div class="inline-flex items-center gap-2 bg-pastelPink px-4 py-1.5 rounded-full text-accentPink text-xs font-bold tracking-wider uppercase">
+                    <i class="fa-solid fa-heart"></i> Testimoni Cat Lovers
+                </div>
+                <h2 class="heading-font text-3xl sm:text-4xl font-bold text-warmBrown">
+                    Kata Mereka Tentang Letta Shop
+                </h2>
+                <p class="text-warmBrown/70">
+                    Kepuasan pemilik dan kebahagiaan kucing Maine Coon adalah prioritas utama kami.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-pastelPink/40 border border-pastelPink p-8 rounded-3xl relative space-y-4 shadow-sm">
+                    <div class="text-accentPink text-2xl">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-warmBrown/80 italic text-sm">
+                        "Maine Coon saya sangat suka dengan makanan dari Letta Shop! Bulunya jadi jauh lebih lebat, berkilau, dan halusnya luar biasa. Pelayanan adminnya juga ramah banget!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-deepPink/20">
+                        <div class="w-12 h-12 rounded-full bg-accentPink/20 flex items-center justify-center font-bold text-accentPink heading-font">
+                            AN
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warmBrown text-sm">Amanda Nabila</h4>
+                            <p class="text-xs text-warmBrown/60">Owner of 2 Maine Coons (Jakarta)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-pastelPink/40 border border-pastelPink p-8 rounded-3xl relative space-y-4 shadow-sm">
+                    <div class="text-accentPink text-2xl">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-warmBrown/80 italic text-sm">
+                        "Kalung beludru pastelnya super lucu dan estetik! Pas banget di leher kucing saya yang besar tapi tetap kelihatan imut chic ala ice cream. Pengirimannya juga kilat."
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-deepPink/20">
+                        <div class="w-12 h-12 rounded-full bg-accentPink/20 flex items-center justify-center font-bold text-accentPink heading-font">
+                            RP
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warmBrown text-sm">Ratu Pratiwi</h4>
+                            <p class="text-xs text-warmBrown/60">Cat Breeder (Bandung)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-pastelPink/40 border border-pastelPink p-8 rounded-3xl relative space-y-4 shadow-sm">
+                    <div class="text-accentPink text-2xl">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-warmBrown/80 italic text-sm">
+                        "Mega Cat Tree dari Letta Shop sangat kokoh untuk kucing raksasa saya. Gak goyang sama sekali pas dipakai lompat-lompat. Sukses terus Letta Online Shop!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-deepPink/20">
+                        <div class="w-12 h-12 rounded-full bg-accentPink/20 flex items-center justify-center font-bold text-accentPink heading-font">
+                            DS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-warmBrown text-sm">Dimas Satria</h4>
+                            <p class="text-xs text-warmBrown/60">Cat Lover (Surabaya)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="bg-warmBrown text-cream pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-accentPink flex items-center justify-center text-white">
+                            <i class="fa-solid fa-cat text-xl"></i>
+                        </div>
+                        <span class="heading-font text-2xl font-bold tracking-wide text-white">Letta Online Shop</span>
+                    </div>
+                    <p class="text-sm text-cream/75 leading-relaxed">
+                        Toko online terpercaya pilihan para cat lovers untuk memenuhi kebutuhan eksklusif raja kucing Maine Coon dengan sentuhan gaya chic pastel yang elegan.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accentPink flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accentPink flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accentPink flex items-center justify-center transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accentPink flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="heading-font text-lg font-bold text-white">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-sm text-cream/75">
+                        <li><a href="#home" class="hover:text-accentPink transition-colors">Beranda Utama</a></li>
+                        <li><a href="#about" class="hover:text-accentPink transition-colors">Tentang Letta Shop</a></li>
+                        <li><a href="#catalog" class="hover:text-accentPink transition-colors">Katalog Produk</a></li>
+                        <li><a href="#testimonials" class="hover:text-accentPink transition-colors">Testimoni Pelanggan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Categories -->
+                <div class="space-y-4">
+                    <h4 class="heading-font text-lg font-bold text-white">Kategori Produk</h4>
+                    <ul class="space-y-2 text-sm text-cream/75">
+                        <li><a href="#catalog" class="hover:text-accentPink transition-colors">Makanan & Nutrisi Maine Coon</a></li>
+                        <li><a href="#catalog" class="hover:text-accentPink transition-colors">Aksesori & Kalung Velvet</a></li>
+                        <li><a href="#catalog" class="hover:text-accentPink transition-colors">Mainan & Cat Tree Raksasa</a></li>
+                        <li><a href="#catalog" class="hover:text-accentPink transition-colors">Perlengkapan Grooming</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div class="space-y-4">
+                    <h4 class="heading-font text-lg font-bold text-white">Hubungi Kami</h4>
+                    <ul class="space-y-3 text-sm text-cream/75">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-accentPink mt-1"></i>
+                            <span>Jl. Kucing Bangsawan No. 88, Kota Malang, Jawa Timur</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accentPink"></i>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accentPink"></i>
+                            <span>hello@lettaonlineshop.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/60">
+                <p>&copy; 2026 Letta Online Shop. All rights reserved. Designed with love for Maine Coon Cats.</p>
+                <p class="mt-2 sm:mt-0">Maine Coon & Ice Cream Chic Aesthetic</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART SIDEBAR MODAL -->
+    <div id="cart-sidebar" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end transition-opacity">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col p-6 animate-slide-left">
+            <div class="flex items-center justify-between pb-4 border-b border-pastelPink">
+                <h3 class="heading-font text-xl font-bold text-warmBrown flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-accentPink"></i> Keranjang Belanja
+                </h3>
+                <button onclick="toggleCart()" class="p-2 text-warmBrown/60 hover:text-warmBrown text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Cart Items Container -->
+            <div id="cart-items" class="flex-grow overflow-y-auto py-4 space-y-4">
+                <p id="empty-cart-msg" class="text-center text-warmBrown/50 py-12">Keranjang Anda masih kosong.</p>
+            </div>
+            <!-- Cart Footer -->
+            <div class="pt-4 border-t border-pastelPink space-y-4">
+                <div class="flex items-center justify-between font-bold text-lg text-warmBrown">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-accentPink">Rp 0</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-accentPink hover:bg-deepPink text-white py-3.5 rounded-full font-bold shadow transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Checkout via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM MESSAGE BOX (Alternative to alert) -->
+    <div id="message-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-sm w-full p-6 rounded-3xl shadow-2xl text-center space-y-4 border-2 border-pastelPink">
+            <div class="w-16 h-16 bg-pastelPink rounded-full flex items-center justify-center mx-auto text-accentPink text-2xl">
+                <i class="fa-solid fa-cat"></i>
+            </div>
+            <h3 class="heading-font text-xl font-bold text-warmBrown">Letta Online Shop</h3>
+            <p id="message-text" class="text-sm text-warmBrown/80">Pesan informasi.</p>
+            <button onclick="closeMessage()" class="w-full bg-accentPink hover:bg-deepPink text-white py-2.5 rounded-full font-bold transition-all">
+                Mengerti
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars";
+            } else {
+                icon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        // Cart state
+        let cart = [];
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('hidden');
+            renderCart();
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if(existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartBadge();
+            openMessage(`Berhasil menambahkan "${name}" ke keranjang belanja!`);
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-badge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalQty;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p id="empty-cart-msg" class="text-center text-warmBrown/50 py-12">Keranjang Anda masih kosong.</p>';
+                totalEl.textContent = 'Rp 0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                html += `
+                    <div class="flex items-center justify-between bg-pastelPink/30 p-3 rounded-2xl border border-pastelPink">
+                        <div>
+                            <h4 class="font-bold text-sm text-warmBrown">${item.name}</h4>
+                            <p class="text-xs text-accentPink font-semibold">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeQty(${index}, 1)" class="w-7 h-7 bg-white rounded-full text-warmBrown font-bold shadow-sm flex items-center justify-center hover:bg-pastelPink">+</button>
+                            <button onclick="changeQty(${index}, -1)" class="w-7 h-7 bg-white rounded-full text-warmBrown font-bold shadow-sm flex items-center justify-center hover:bg-pastelPink">-</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            totalEl.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartBadge();
+            renderCart();
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) {
+                openMessage('Keranjang belanja Anda masih kosong. Silakan pilih produk terlebih dahulu.');
+                return;
+            }
+            let text = "Halo Letta Online Shop, saya ingin memesan produk berikut:%0A";
+            let total = 0;
+            cart.forEach(item => {
+                let sub = item.price * item.qty;
+                total += sub;
+                text += `- ${item.name} (${item.qty}x) - Rp ${sub.toLocaleString('id-ID')}%0A`;
+            });
+            text += `%0ATotal Keseluruhan: Rp ${total.toLocaleString('id-ID')}%0AMohon info selanjutnya, terima kasih!`;
+            window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+        }
+
+        // Filter Category
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.className = "category-btn bg-white hover:bg-pastelPink text-warmBrown border border-pastelPink px-5 py-2 rounded-full text-sm font-semibold transition-all";
+            });
+            document.getElementById(`btn-${category}`).className = "category-btn bg-accentPink text-white px-5 py-2 rounded-full text-sm font-bold shadow-sm transition-all";
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Custom Message Box functions
+        function openMessage(text) {
+            document.getElementById('message-text').textContent = text;
+            document.getElementById('message-modal').classList.remove('hidden');
+        }
+
+        function closeMessage() {
+            document.getElementById('message-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
